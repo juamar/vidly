@@ -38,19 +38,42 @@ namespace Vidly.Controllers
             return Content("id = " + id);
         }
 
-        public ActionResult index(int? pageIndex, string sortBy)
-        {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
-            if (String.IsNullOrWhiteSpace(sortBy))
-                sortBy = "Name";
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
-        }
+        //public ActionResult index(int? pageIndex, string sortBy)
+        //{
+        //    if (!pageIndex.HasValue)
+        //        pageIndex = 1;
+        //    if (String.IsNullOrWhiteSpace(sortBy))
+        //        sortBy = "Name";
+        //    return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+        //}
 
         [Route("movies/released/{year:regex(2016|2017)}/{month:regex(\\d{2}):range(1, 12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
+        }
+
+        public ActionResult Index()
+        {
+            return View(new LayoutViewModel());
+        }
+
+        public ActionResult Details(int id)
+        {
+            LayoutViewModel viewModel = new LayoutViewModel();
+            viewModel.MovieSelected = id;
+
+            //We Shall check if Movie really exists...
+            foreach (Movies movie in viewModel.Movies)
+            {
+                if (id == movie.id)
+                {
+                    return View(viewModel);
+                }
+            }
+
+            return HttpNotFound();
+
         }
     }
 }

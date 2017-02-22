@@ -1,0 +1,29 @@
+﻿@using Vidly.Models;
+@model Vidly.ViewModels.LayoutViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Customer customer in Model.Customers)
+            {
+                <tr class="clickable-row" data-href="/Customers/details/@customer.Id">
+                    <td>@customer.Id</td>
+
+                    <td>@customer.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

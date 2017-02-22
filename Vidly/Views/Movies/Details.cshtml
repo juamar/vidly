@@ -1,0 +1,9 @@
+﻿@model Vidly.ViewModels.LayoutViewModel
+
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.GetMoviesById(Model.MovieSelected).name</h2>
+<pre>Id = @Model.GetMoviesById(Model.MovieSelected).id</pre>

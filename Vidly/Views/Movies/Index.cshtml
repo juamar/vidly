@@ -1,0 +1,29 @@
+﻿@using Vidly.Models;
+@model Vidly.ViewModels.LayoutViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Movies movie in Model.Movies)
+            {
+                <tr class="clickable-row" data-href="/Movies/details/@movie.id">
+                    <td>@movie.id</td>
+
+                    <td>@movie.name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

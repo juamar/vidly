@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -10,7 +11,8 @@ namespace Vidly.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            LayoutViewModel model = new LayoutViewModel();
+            return View(model);
         }
 
         public ActionResult About()
