@@ -61,14 +61,14 @@ namespace Vidly.Controllers
         public ActionResult Details(int id)
         {
             LayoutViewModel viewModel = new LayoutViewModel();
-            viewModel.MovieSelected = id;
+            //viewModel.MovieSelected = id;
 
             //We Shall check if Movie really exists...
             foreach (Movies movie in viewModel.Movies)
             {
                 if (id == movie.id)
                 {
-                    return View(viewModel);
+                    return View(movie);
                 }
             }
 

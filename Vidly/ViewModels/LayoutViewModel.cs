@@ -14,6 +14,7 @@ namespace Vidly.ViewModels
         public int CustomerSelected { get; set; }
         public int MovieSelected { get; set; }
 
+
         public LayoutViewModel()
         {
             Movies = new List<Movies> { new Movies { name = "Shrek!", id = 1 }, new Movies { name = "La guerra de las patatas", id = 2 } };

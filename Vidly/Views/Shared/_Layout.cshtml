@@ -1,11 +1,9 @@
-﻿@model Vidly.ViewModels.LayoutViewModel
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - @Model.GetApplicationName()</title>
+    <title>@ViewBag.Title - Vidly</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -16,7 +14,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - @Model.GetApplicationName()</p>
+            <p>&copy; @DateTime.Now.Year - Vidly</p>
         </footer>
     </div>
 

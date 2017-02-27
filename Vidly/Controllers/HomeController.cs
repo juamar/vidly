@@ -11,8 +11,8 @@ namespace Vidly.Controllers
     {
         public ActionResult Index()
         {
-            LayoutViewModel model = new LayoutViewModel();
-            return View(model);
+            //ViewData["Menu"] = new LayoutViewModel();
+            return View();
         }
 
         public ActionResult About()

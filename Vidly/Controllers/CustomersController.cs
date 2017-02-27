@@ -26,7 +26,7 @@ namespace Vidly.Controllers
             {
                 if ( id == customer.Id )
                 {
-                    return View(viewModel);
+                    return View(customer);
                 }
             }
 

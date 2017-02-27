@@ -6,7 +6,7 @@ using Vidly.Models;
 
 namespace Vidly.ViewModels
 {
-    public class RandomMovieViewModel
+    public class RandomMovieViewModel : LayoutViewModel
     {
         public Movies Movie { get; set; }
         public List<Customer> Customers { get; set; }
