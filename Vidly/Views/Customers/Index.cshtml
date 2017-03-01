@@ -1,5 +1,5 @@
-﻿@using Vidly.Models;
-@model Vidly.ViewModels.LayoutViewModel
+﻿@using Vidly.Models
+@model List<Customer>
 
 @{
     ViewBag.Title = "Index";
@@ -13,15 +13,18 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Discount Rate</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (Customer customer in Model.Customers)
+            @foreach (Customer customer in Model)
             {
                 <tr class="clickable-row" data-href="/Customers/details/@customer.Id">
                     <td>@customer.Id</td>
 
                     <td>@customer.Name</td>
+
+                    <td>@customer.MembershipType.DiscountRate%</td>
                 </tr>
             }
         </tbody>
