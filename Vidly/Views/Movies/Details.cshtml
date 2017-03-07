@@ -6,4 +6,10 @@
 }
 
 <h2>@Model.name</h2>
-<pre>Id = @Model.id</pre>
+<pre>
+    Id = @Model.id
+    Genre = @Model.Genre.Name
+    Release Date = @Model.ReleaseDate.ToString("MM/dd/yyyy")
+    Date Added = @Model.DateAdded.ToString("MM/dd/yyyy")
+    In Stock = @Model.NumberInStock
+</pre>

@@ -1,5 +1,5 @@
 ﻿@using Vidly.Models;
-@model Vidly.ViewModels.LayoutViewModel
+@model List<Movies>
 
 @{
     ViewBag.Title = "Index";
@@ -13,15 +13,18 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Genre</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (Movies movie in Model.Movies)
+            @foreach (Movies movies in Model)
             {
-                <tr class="clickable-row" data-href="/Movies/details/@movie.id">
-                    <td>@movie.id</td>
+                <tr class="clickable-row" data-href="/Movies/details/@movies.id">
+                    <td>@movies.id</td>
 
-                    <td>@movie.name</td>
+                    <td>@movies.name</td>
+
+                    <td>@movies.Genre.Name</td>
                 </tr>
             }
         </tbody>
