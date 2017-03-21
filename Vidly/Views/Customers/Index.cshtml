@@ -19,7 +19,7 @@
         <tbody>
             @foreach (Customer customer in Model)
             {
-                <tr class="clickable-row" data-href="/Customers/details/@customer.Id">
+                <tr class="clickable-row" data-href="/Customers/edit/@customer.Id">
                     <td>@customer.Id</td>
 
                     <td>@customer.Name</td>

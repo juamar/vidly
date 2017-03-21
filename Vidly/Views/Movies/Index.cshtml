@@ -7,6 +7,8 @@
 }
 
 <h2>Movies</h2>
+<a class="btn btn-primary" href="movies/new">New Movie</a>
+<br><br>
 <div class="table-responsive">
     <table class="table table-hover table-striped table-bordered">
         <thead>
@@ -19,7 +21,7 @@
         <tbody>
             @foreach (Movies movies in Model)
             {
-                <tr class="clickable-row" data-href="/Movies/details/@movies.id">
+                <tr class="clickable-row" data-href="/Movies/edit/@movies.id">
                     <td>@movies.id</td>
 
                     <td>@movies.name</td>
