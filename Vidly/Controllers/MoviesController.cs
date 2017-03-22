@@ -47,7 +47,16 @@ namespace Vidly.Controllers
 
         public ActionResult edit(int id)
         {
-            return Content("id = " + id);
+            Movies movie = _context.Movies.SingleOrDefault(m => m.id == id);
+            if (movie == null)
+                return HttpNotFound();
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
+            };
+            return View("MovieForm", viewModel);
         }
 
         //public ActionResult index(int? pageIndex, string sortBy)
@@ -94,18 +103,18 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(Movies movie)
+        public ActionResult Save(Movies Movie)
         {
-            /*if (customer.Id == 0)*/
-                _context.Movies.Add(movie);
-            /*else
+            if (Movie.id == 0)
+                _context.Movies.Add(Movie);
+            else
             {
-                var customerInDB = _context.Customers.Single(c => c.Id == customer.Id);
-                customerInDB.Name = customer.Name;
-                customerInDB.BirthDate = customer.BirthDate;
-                customerInDB.MembershipTypeId = customer.MembershipTypeId;
-                customerInDB.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
-            }*/
+                var MovieInDB = _context.Movies.Single(m => m.id == Movie.id);
+                MovieInDB.name = Movie.name;
+                MovieInDB.ReleaseDate = Movie.ReleaseDate;
+                MovieInDB.GenreId = Movie.GenreId;
+                MovieInDB.NumberInStock = Movie.NumberInStock;
+            }
 
             _context.SaveChanges();
 
