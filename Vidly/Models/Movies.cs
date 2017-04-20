@@ -10,6 +10,7 @@ namespace Vidly.Models
     {
         public int id { get; set; }
 
+        [Required]
         [Display(Name = "Name")]
         public string name { get; set; }
 
@@ -18,6 +19,7 @@ namespace Vidly.Models
         [Display(Name = "Genre")]
         public byte GenreId { get; set; }
 
+        [Required]
         [Display(Name = "Release date")]
         public DateTime? ReleaseDate { get; set; }
 
@@ -25,6 +27,13 @@ namespace Vidly.Models
         public DateTime? DateAdded { get; set; }
 
         [Display(Name = "Number in stock")]
+        [StockGratterThan0]
         public int NumberInStock { get; set; }
+
+        public Movies()
+        {
+            DateAdded = DateTime.Now;
+        }
+
     }
 }
