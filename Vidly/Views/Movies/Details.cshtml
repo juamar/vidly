@@ -9,7 +9,7 @@
 <pre>
     Id = @Model.id
     Genre = @Model.Genre.Name
-    Release Date = @Model.ReleaseDate.ToString("MM/dd/yyyy")
-    Date Added = @Model.DateAdded.ToString("MM/dd/yyyy")
+    Release Date = ((Date)@Model.ReleaseDate).ToString("MM/dd/yyyy")
+    Date Added = ((Date)@Model.DateAdded).ToString("MM/dd/yyyy")
     In Stock = @Model.NumberInStock
 </pre>
