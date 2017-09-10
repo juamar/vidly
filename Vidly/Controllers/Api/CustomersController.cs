@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
+using System.Data.Entity;
 using System.Web.Http;
 using Vidly.Models;
 using Vidly.Dtos;
@@ -22,7 +22,7 @@ namespace Vidly.Controllers.Api
         // GET /api/customers
         public IEnumerable<CustomerDto> GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            return _context.Customers.Include(c => c.MembershipType).ToList().Select(Mapper.Map<Customer, CustomerDto>);
         }
 
         // Get /api/customers/1
@@ -37,6 +37,7 @@ namespace Vidly.Controllers.Api
         }
 
         // POST /api/customers
+        [Authorize(Roles = RoleName.CanManageMovies)]
         [HttpPost]
         public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
@@ -65,6 +66,7 @@ namespace Vidly.Controllers.Api
         }
 
         // PUT /api/customers/1
+        [Authorize(Roles = RoleName.CanManageMovies)]
         [HttpPut]
         public void UpdateCustomer(int id, CustomerDto customerDto)
         {
@@ -82,6 +84,7 @@ namespace Vidly.Controllers.Api
         }
 
         // DELETE /api/customers/1
+        [Authorize(Roles = RoleName.CanManageMovies)]
         [HttpDelete]
         public void DeleteCustomer(int id)
         {
